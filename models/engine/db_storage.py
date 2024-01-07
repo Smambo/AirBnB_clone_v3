@@ -51,10 +51,10 @@ class DBStorage:
                     new_dict[key] = obj
         return (new_dict)
 
-    def get(self, cls, obj_id):
+    def get(self, cls, id):
         """retrieves an object based on a specific class and ID"""
         objects = self.all(cls)
-        obj = objects.get(f"{cls.__name__}.{obj_id}", None)
+        obj = objects.get(f"{cls.__name__}.{id}", None)
         return obj
 
     def count(self, cls=None):
