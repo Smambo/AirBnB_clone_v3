@@ -53,6 +53,11 @@ class DBStorage:
 
     def get(self, cls, id):
         """retrieves an object based on a specific class and ID"""
+        if not (
+                hasattr(cls, '__tablename__')
+                or not isinstance(id, str) or not id
+                ):
+            return None
         objects = self.all(cls)
         obj = objects.get(f"{cls.__name__}.{id}", None)
         return obj
